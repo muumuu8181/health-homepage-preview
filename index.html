@@ -308,6 +308,13 @@
       document.getElementById('cartCount').textContent = count;
       document.getElementById('cartTotal').textContent = total.toLocaleString();
       document.getElementById('cartSubtotal').textContent = '¥' + total.toLocaleString();
+
+      const hasB1 = cart.some(i => i.id === 'B1');
+      document.querySelectorAll('[data-id="B2"],[data-id="B3"],[data-id="B4"]').forEach(btn => {
+        btn.disabled = !hasB1;
+        const addon = btn.closest('.addon');
+        if (addon) addon.classList.toggle('addon--locked', !hasB1);
+      });
       const list = document.getElementById('cartItems');
       if (cart.length === 0) {
         list.innerHTML = '<li class="cart-empty">カートは空です</li>';
@@ -336,6 +343,7 @@
       }
       const btn = e.target.closest('.btn-add');
       if (btn) {
+        if (btn.disabled) return;
         addToCart(btn.dataset.id, btn.dataset.name, parseInt(btn.dataset.price, 10));
         return;
       }

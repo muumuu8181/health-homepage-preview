@@ -344,18 +344,50 @@ html, body {
 .addon {
   position: relative;
   margin-top: 14px;
-  padding: 10px 14px;
+  padding: 14px 18px;
   background: #f5efe0;
   border: 1px dashed #c9bfa8;
   border-radius: 3px;
+  min-height: 72px;
+  transition: background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
 }
 
 .addon:has(.btn-add) {
-  padding-right: 100px;
+  padding-right: 108px;
 }
 
 .addon + .addon {
-  margin-top: 6px;
+  margin-top: 10px;
+}
+
+.addon-title { margin-bottom: 6px; }
+.addon-note { line-height: 1.6; }
+
+.addon--locked {
+  background: #efe8d8;
+  border-color: #d9cfbe;
+  opacity: 0.55;
+}
+
+.addon--locked .addon-title,
+.addon--locked .addon-note {
+  color: #a8a59b;
+}
+
+.addon--locked .addon-badge {
+  background: #a8a59b;
+}
+
+.addon--locked .btn-add {
+  background: #d9cfbe;
+  color: #8a8578;
+  border-color: #c9bfa8;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.addon--locked .btn-add::before {
+  content: "🔒 ";
+  font-size: 11px;
 }
 
 .addon-title {
@@ -592,9 +624,8 @@ html, body {
 
 .btn-add {
   position: absolute;
-  top: 50%;
+  top: 18px;
   right: 14px;
-  transform: translateY(-50%);
   width: 90px;
   height: 72px;
   margin: 0;
@@ -627,6 +658,8 @@ html, body {
   width: 82px;
   height: 56px;
   right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 12px;
 }
 .btn-add--sm:active { background: #f3c234; }
