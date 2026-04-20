@@ -384,7 +384,7 @@
         if (id === 'B1') {
           btn.disabled = inCart;
         } else {
-          btn.disabled = !hasB1 || inCart;
+          btn.disabled = !hasB1;
           const addon = btn.closest('.addon');
           if (addon) addon.classList.toggle('addon--locked', !hasB1);
         }
@@ -425,7 +425,12 @@
       const btn = e.target.closest('.btn-add');
       if (btn) {
         if (btn.disabled) return;
-        addToCart(btn.dataset.id, btn.dataset.name, parseInt(btn.dataset.price, 10));
+        const id = btn.dataset.id;
+        if (['B2','B3','B4'].includes(id) && getCart().some(i => i.id === id)) {
+          removeFromCart(id);
+          return;
+        }
+        addToCart(id, btn.dataset.name, parseInt(btn.dataset.price, 10));
         return;
       }
       const rem = e.target.closest('[data-remove]');

@@ -599,23 +599,23 @@ html, body {
 }
 
 .option-group {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   gap: 8px;
 }
 
 .option {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 12px;
+  padding: 8px 12px;
   background: var(--bg);
   border: 1px solid var(--line);
   border-radius: 4px;
   font-size: 13px;
   color: var(--ink);
   cursor: pointer;
-  min-height: 36px;
+  min-height: 40px;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -663,7 +663,6 @@ html, body {
 
 .btn-add--added {
   opacity: 0.5;
-  cursor: default;
   box-shadow: none;
 }
 .btn-add--added:active { opacity: 0.5; }
