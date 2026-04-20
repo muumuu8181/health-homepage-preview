@@ -193,7 +193,7 @@ html, body {
 .sub-tabs {
   display: flex;
   width: 100%;
-  margin-bottom: 18px;
+  margin-bottom: 10px;
   gap: 6px;
 }
 
@@ -563,8 +563,8 @@ html, body {
 .inquiry {
   width: 100%;
   max-width: 640px;
-  margin-top: 24px;
-  padding: 28px 20px;
+  margin-top: 4px;
+  padding: 18px 16px 20px;
   background: #fbf7ef;
   border: 1px solid var(--line);
 }
@@ -574,21 +574,21 @@ html, body {
   letter-spacing: 0.24em;
   color: var(--ink-soft);
   text-transform: uppercase;
-  margin: 0 0 10px;
+  margin: 0 0 6px;
   font-weight: 700;
 }
 
 .inquiry-lead {
   font-size: 13px;
   color: var(--ink-soft);
-  margin: 0 0 20px;
-  line-height: 1.7;
+  margin: 0 0 12px;
+  line-height: 1.6;
 }
 
 .inquiry-form {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
 }
 
 .field {
@@ -756,6 +756,10 @@ html, body {
   z-index: 3;
   pointer-events: none;
 }
+
+.discount-tag--sm { font-size: 10px; padding: 2px 8px; }
+.discount-tag--md { font-size: 11.5px; padding: 2px 9px; top: calc(50% - 40px); }
+.discount-tag--lg { font-size: 13px; padding: 3px 10px; top: calc(50% - 44px); transform: rotate(-6deg); }
 
 .addon.has-btn {
   min-height: 86px;
@@ -1029,8 +1033,8 @@ html, body {
 }
 
 .message {
-  margin: 40px 0 0;
-  font-size: 13px;
+  margin: 16px 0 0;
+  font-size: 12px;
   letter-spacing: 0.14em;
   color: var(--ink-soft);
   font-weight: 400;
