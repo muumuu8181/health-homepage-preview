@@ -395,20 +395,25 @@
       if (cart.length === 0) {
         list.innerHTML = '<li class="cart-empty">カートは空です</li>';
       } else {
-        list.innerHTML = cart.map(i => `
-          <li>
-            <div class="cart-item-info">
-              <span class="cart-item-name">${i.name}</span>
-              <span class="cart-item-price">${yen(i.price * i.qty)}</span>
-            </div>
-            <div class="cart-qty">
-              <button class="cart-qty-btn" data-dec="${i.id}" type="button" aria-label="減らす">−</button>
-              <span class="cart-qty-num">${i.qty}</span>
-              <button class="cart-qty-btn" data-inc="${i.id}" type="button" aria-label="増やす">＋</button>
-            </div>
-            <button class="cart-remove" data-remove="${i.id}" type="button" aria-label="削除">×</button>
-          </li>
-        `).join('');
+        list.innerHTML = cart.map(i => {
+          const isB = B_IDS.includes(i.id);
+          return `
+            <li>
+              <div class="cart-item-info">
+                <span class="cart-item-name">${i.name}</span>
+                <span class="cart-item-price">${yen(i.price * i.qty)}</span>
+              </div>
+              ${isB ? '' : `
+                <div class="cart-qty">
+                  <button class="cart-qty-btn" data-dec="${i.id}" type="button" aria-label="減らす">−</button>
+                  <span class="cart-qty-num">${i.qty}</span>
+                  <button class="cart-qty-btn" data-inc="${i.id}" type="button" aria-label="増やす">＋</button>
+                </div>
+              `}
+              <button class="cart-remove" data-remove="${i.id}" type="button" aria-label="削除">×</button>
+            </li>
+          `;
+        }).join('');
       }
     }
 
