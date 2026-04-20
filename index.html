@@ -75,17 +75,17 @@
               <div class="addon has-btn">
                 <h5 class="addon-title"><span class="addon-badge">B2</span>+ ヒーリングペーパー</h5>
                 <p class="addon-note">+¥1,000 (合計 税込 <strong>¥3,000</strong>)</p>
-                <button class="btn-add btn-add--sm" data-id="B2" data-name="B2: 手当+シール+ヒーリングペーパー" data-price="3000" type="button">カートに追加</button>
+                <button class="btn-add btn-add--sm" data-id="B2" data-name="B2: + ヒーリングペーパー" data-price="1000" type="button">カートに追加</button>
               </div>
               <div class="addon has-btn">
                 <h5 class="addon-title"><span class="addon-badge">B3</span>+ カード</h5>
                 <p class="addon-note">+¥5,000 (合計 税込 <strong>¥7,000</strong>)</p>
-                <button class="btn-add btn-add--sm" data-id="B3" data-name="B3: 手当+シール+カード" data-price="7000" type="button">カートに追加</button>
+                <button class="btn-add btn-add--sm" data-id="B3" data-name="B3: + カード" data-price="5000" type="button">カートに追加</button>
               </div>
               <div class="addon has-btn">
                 <h5 class="addon-title"><span class="addon-badge">B4</span>+ ペーパー + カード</h5>
                 <p class="addon-note">+¥8,000 (合計 税込 <strong>¥10,000</strong>)</p>
-                <button class="btn-add btn-add--sm" data-id="B4" data-name="B4: 手当+シール+ペーパー+カード" data-price="10000" type="button">カートに追加</button>
+                <button class="btn-add btn-add--sm" data-id="B4" data-name="B4: + ペーパー + カード" data-price="8000" type="button">カートに追加</button>
               </div>
             </article>
           </div>
@@ -284,11 +284,12 @@
     const yen = (n) => '¥' + n.toLocaleString();
 
     const B_IDS = ['B1','B2','B3','B4'];
+    const B_UPGRADES = ['B2','B3','B4'];
 
     function addToCart(id, name, price) {
       let cart = getCart();
-      if (B_IDS.includes(id)) {
-        cart = cart.filter(i => !B_IDS.includes(i.id));
+      if (B_UPGRADES.includes(id)) {
+        cart = cart.filter(i => !B_UPGRADES.includes(i.id));
       }
       const existing = cart.find(i => i.id === id);
       if (existing) existing.qty++;
@@ -301,7 +302,11 @@
     }
 
     function removeFromCart(id) {
-      saveCart(getCart().filter(i => i.id !== id));
+      let cart = getCart().filter(i => i.id !== id);
+      if (id === 'B1') {
+        cart = cart.filter(i => !B_UPGRADES.includes(i.id));
+      }
+      saveCart(cart);
       render();
     }
 
@@ -335,7 +340,7 @@
       document.getElementById('cartTotal').textContent = total.toLocaleString();
       document.getElementById('cartSubtotal').textContent = '¥' + total.toLocaleString();
 
-      const hasAnyB = cart.some(i => B_IDS.includes(i.id));
+      const hasB1 = cart.some(i => i.id === 'B1');
       B_IDS.forEach(id => {
         const btn = document.querySelector('[data-id="' + id + '"]');
         if (!btn) return;
@@ -343,9 +348,9 @@
         if (id === 'B1') {
           btn.disabled = inCart;
         } else {
-          btn.disabled = !hasAnyB || inCart;
+          btn.disabled = !hasB1 || inCart;
           const addon = btn.closest('.addon');
-          if (addon) addon.classList.toggle('addon--locked', !hasAnyB);
+          if (addon) addon.classList.toggle('addon--locked', !hasB1);
         }
         btn.classList.toggle('btn-add--added', inCart);
         btn.textContent = inCart ? '追加済み' : 'カートに追加';
