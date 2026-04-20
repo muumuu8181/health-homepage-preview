@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f5efe6">
+<title>Coming soon</title>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<main class="stage">
+
+  <nav class="tabs" role="tablist">
+    <button class="tab tab-active" data-tab="products" type="button">商品</button>
+    <button class="tab" data-tab="contact" type="button">問い合わせ</button>
+  </nav>
+
+  <div class="tab-panel" data-panel="products">
+    <section class="products">
+      <h2 class="products-title">PRODUCTS</h2>
+
+      <div class="product-group">
+        <h3 class="group-title">お試し・初回限定</h3>
+
+        <div class="product-subgroup">
+          <p class="subgroup-label">お試し</p>
+          <div class="product-list">
+            <article class="product-card">
+              <h4>紙(お試し)</h4>
+              <p class="note">初回3枚まで</p>
+              <p class="note">紹介連絡1件で +3枚</p>
+              <p class="duration"><span class="duration-label">想定対応年数</span> 1週間</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="product-divider"></div>
+
+        <div class="product-subgroup">
+          <p class="subgroup-label">初回限定</p>
+          <div class="product-list">
+            <article class="product-card">
+              <h4><span class="tegate-tag">手当</span> + シール</h4>
+              <p class="note">手当(5秒) + シール 1枚</p>
+              <p class="price">税込 ¥2,000</p>
+            </article>
+            <article class="product-card">
+              <h4><span class="tegate-tag">手当</span> + シール + 紙</h4>
+              <p class="note">上記に紙(継続と同じ)を追加</p>
+              <p class="price">税込 ¥3,000</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-group">
+        <h3 class="group-title">継続</h3>
+        <p class="group-note">※ 初回の手当てを終えた方のみ</p>
+        <div class="product-list">
+          <article class="product-card">
+            <h4>紙</h4>
+            <p class="price">税込 ¥4,000</p>
+            <p class="duration"><span class="duration-label">想定対応年数</span> 3〜6ヶ月</p>
+          </article>
+          <article class="product-card">
+            <h4>シール</h4>
+            <p class="price">税込 ¥1,000</p>
+            <p class="note">12枚 / 1枚あたり約3日</p>
+            <p class="duration"><span class="duration-label">想定対応年数</span> 1ヶ月+</p>
+          </article>
+          <article class="product-card">
+            <h4>カード</h4>
+            <p class="price">税込 ¥8,000</p>
+            <p class="duration"><span class="duration-label">想定対応年数</span> 3年</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="tab-panel" data-panel="contact" hidden>
+    <nav class="sub-tabs" role="tablist">
+      <button class="sub-tab sub-tab-active" data-subtab="general" type="button">一般</button>
+      <button class="sub-tab" data-subtab="referral" type="button">紹介された方</button>
+    </nav>
+
+    <div class="sub-panel" data-subpanel="general">
+      <section class="inquiry">
+        <h2 class="inquiry-title">CONTACT</h2>
+        <p class="inquiry-lead">ご質問・ご要望など、お気軽にお問い合わせください。</p>
+        <form class="inquiry-form" action="#" onsubmit="return false;">
+          <label class="field">
+            <span class="field-label">お名前<span class="field-hint">(ニックネーム可)</span></span>
+            <input type="text" name="name" required>
+          </label>
+          <label class="field">
+            <span class="field-label">メールアドレス</span>
+            <input type="email" name="email" required>
+          </label>
+          <label class="field">
+            <span class="field-label">ご用件</span>
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+          <button type="submit" class="btn-submit">送信する</button>
+          <p class="inquiry-note">※ 送信機能は後日接続予定</p>
+        </form>
+      </section>
+    </div>
+
+    <div class="sub-panel" data-subpanel="referral" hidden>
+      <section class="inquiry">
+        <h2 class="inquiry-title">CONTACT</h2>
+        <p class="inquiry-lead">ご紹介を受けた方は、こちらからご連絡ください。</p>
+        <form class="inquiry-form" action="#" onsubmit="return false;">
+          <label class="field">
+            <span class="field-label">お名前<span class="field-hint">(ニックネーム可)</span></span>
+            <input type="text" name="name" required>
+          </label>
+          <label class="field">
+            <span class="field-label">メールアドレス</span>
+            <input type="email" name="email" required>
+          </label>
+          <label class="field">
+            <span class="field-label">紹介者のお名前 または 会員ID</span>
+            <input type="text" name="referrer" required>
+          </label>
+          <div class="field field-group">
+            <span class="field-label">ご都合の良い日時<span class="field-hint">(候補を5つまで)</span></span>
+            <input type="text" name="date1" placeholder="第1希望  例: 4/25(土) 14:00〜">
+            <input type="text" name="date2" placeholder="第2希望">
+            <input type="text" name="date3" placeholder="第3希望">
+            <input type="text" name="date4" placeholder="第4希望">
+            <input type="text" name="date5" placeholder="第5希望">
+          </div>
+          <label class="field">
+            <span class="field-label">ご希望の場所</span>
+            <input type="text" name="location" placeholder="エリア・店舗名など">
+          </label>
+          <label class="field">
+            <span class="field-label">メッセージ<span class="field-hint">(任意)</span></span>
+            <textarea name="message" rows="4"></textarea>
+          </label>
+          <button type="submit" class="btn-submit">送信する</button>
+          <p class="inquiry-note">※ 送信機能は後日接続予定</p>
+        </form>
+      </section>
+    </div>
+  </div>
+
+  <p class="message">ローンチ準備中です。</p>
+</main>
+
+<script>
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      document.querySelectorAll('.tab').forEach(t => {
+        t.classList.toggle('tab-active', t === tab);
+      });
+      document.querySelectorAll('.tab-panel').forEach(p => {
+        p.hidden = p.dataset.panel !== target;
+      });
+    });
+  });
+
+  document.querySelectorAll('.sub-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.subtab;
+      document.querySelectorAll('.sub-tab').forEach(t => {
+        t.classList.toggle('sub-tab-active', t === tab);
+      });
+      document.querySelectorAll('.sub-panel').forEach(p => {
+        p.hidden = p.dataset.subpanel !== target;
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
