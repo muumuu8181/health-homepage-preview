@@ -282,6 +282,23 @@ html, body {
   border-bottom-color: #e6c9a0;
 }
 
+.product-group--continuing .product-card .duration {
+  position: absolute;
+  top: 94px;
+  right: 14px;
+  width: 90px;
+  text-align: center;
+  font-size: 10.5px;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.product-group--continuing .product-card .duration-label {
+  display: block;
+  margin: 0 0 1px;
+  font-size: 9.5px;
+}
+
 .group-title {
   font-size: 13px;
   color: var(--ink);
