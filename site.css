@@ -654,6 +654,16 @@ html, body {
   .btn-add:hover { background: #eab626; }
 }
 
+.btn-add--added {
+  opacity: 0.5;
+  cursor: default;
+  box-shadow: none;
+}
+.btn-add--added:active { opacity: 0.5; }
+@media (hover: hover) {
+  .btn-add--added:hover { background: #f3c234; opacity: 0.5; }
+}
+
 .btn-add--sm {
   width: 82px;
   height: 56px;

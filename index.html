@@ -297,7 +297,11 @@
     }
 
     function removeFromCart(id) {
-      saveCart(getCart().filter(i => i.id !== id));
+      let newCart = getCart().filter(i => i.id !== id);
+      if (id === 'B1') {
+        newCart = newCart.filter(i => !['B2','B3','B4'].includes(i.id));
+      }
+      saveCart(newCart);
       render();
     }
 
@@ -310,10 +314,19 @@
       document.getElementById('cartSubtotal').textContent = '¥' + total.toLocaleString();
 
       const hasB1 = cart.some(i => i.id === 'B1');
-      document.querySelectorAll('[data-id="B2"],[data-id="B3"],[data-id="B4"]').forEach(btn => {
-        btn.disabled = !hasB1;
-        const addon = btn.closest('.addon');
-        if (addon) addon.classList.toggle('addon--locked', !hasB1);
+      ['B1','B2','B3','B4'].forEach(id => {
+        const btn = document.querySelector('[data-id="' + id + '"]');
+        if (!btn) return;
+        const inCart = cart.some(i => i.id === id);
+        if (id === 'B1') {
+          btn.disabled = inCart;
+        } else {
+          btn.disabled = !hasB1 || inCart;
+          const addon = btn.closest('.addon');
+          if (addon) addon.classList.toggle('addon--locked', !hasB1);
+        }
+        btn.classList.toggle('btn-add--added', inCart);
+        btn.textContent = inCart ? '追加済み' : 'カートに追加';
       });
       const list = document.getElementById('cartItems');
       if (cart.length === 0) {
