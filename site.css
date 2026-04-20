@@ -527,6 +527,37 @@ html, body {
   margin-top: 2px;
 }
 
+.option-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.option {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-size: 13px;
+  color: var(--ink);
+  cursor: pointer;
+  min-height: 36px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.option input {
+  margin: 0;
+  accent-color: #6b7f54;
+}
+
+.option:has(input:checked) {
+  background: #ede4d3;
+  border-color: #8a9a6b;
+}
+
 .btn-submit {
   margin-top: 6px;
   padding: 12px 16px;

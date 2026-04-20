@@ -14,6 +14,7 @@
   <nav class="tabs" role="tablist">
     <button class="tab tab-active" data-tab="products" type="button">商品</button>
     <button class="tab" data-tab="contact" type="button">問い合わせ</button>
+    <button class="tab" data-tab="survey" type="button">アンケート</button>
   </nav>
 
   <div class="tab-panel" data-panel="products">
@@ -163,6 +164,57 @@
         </form>
       </section>
     </div>
+  </div>
+
+  <div class="tab-panel" data-panel="survey" hidden>
+    <section class="inquiry">
+      <h2 class="inquiry-title">SURVEY</h2>
+      <p class="inquiry-lead">約1分のアンケートにご協力ください。<br>回答後、<span class="addon-badge">A</span> お試しペーパー 3枚 をお渡しします。</p>
+      <form class="inquiry-form" action="https://formsubmit.co/kakari8888@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="[1% Health Up] アンケート回答">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <label class="field">
+          <span class="field-label">お名前<span class="field-hint">(ニックネーム可)</span></span>
+          <input type="text" name="name" required>
+        </label>
+        <label class="field">
+          <span class="field-label">メールアドレス</span>
+          <input type="email" name="email" required>
+        </label>
+        <div class="field">
+          <span class="field-label">ご年齢</span>
+          <div class="option-group">
+            <label class="option"><input type="radio" name="age" value="10代"><span>10代</span></label>
+            <label class="option"><input type="radio" name="age" value="20代"><span>20代</span></label>
+            <label class="option"><input type="radio" name="age" value="30代"><span>30代</span></label>
+            <label class="option"><input type="radio" name="age" value="40代"><span>40代</span></label>
+            <label class="option"><input type="radio" name="age" value="50代"><span>50代</span></label>
+            <label class="option"><input type="radio" name="age" value="60代以上"><span>60代以上</span></label>
+          </div>
+        </div>
+        <label class="field">
+          <span class="field-label">最近の健康のお悩み<span class="field-hint">(任意)</span></span>
+          <textarea name="health_concern" rows="3"></textarea>
+        </label>
+        <div class="field">
+          <span class="field-label">興味のある商品<span class="field-hint">(複数選択可)</span></span>
+          <div class="option-group">
+            <label class="option"><input type="checkbox" name="interest" value="A お試しペーパー"><span>A お試しペーパー</span></label>
+            <label class="option"><input type="checkbox" name="interest" value="B 手当+シール"><span>B 手当+シール</span></label>
+            <label class="option"><input type="checkbox" name="interest" value="B+ ヒーリングペーパー"><span>B+ ヒーリングペーパー</span></label>
+            <label class="option"><input type="checkbox" name="interest" value="C 継続ヒーリングペーパー"><span>C 継続ヒーリングペーパー</span></label>
+            <label class="option"><input type="checkbox" name="interest" value="D シール"><span>D シール</span></label>
+            <label class="option"><input type="checkbox" name="interest" value="E カード"><span>E カード</span></label>
+          </div>
+        </div>
+        <label class="field">
+          <span class="field-label">ご感想・ご要望<span class="field-hint">(任意)</span></span>
+          <textarea name="comment" rows="3"></textarea>
+        </label>
+        <button type="submit" class="btn-submit">送信する</button>
+      </form>
+    </section>
   </div>
 
   <p class="message">ローンチ準備中です。</p>
