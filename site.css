@@ -255,10 +255,32 @@ html, body {
 }
 
 .product-card {
+  position: relative;
   background: #fbf7ef;
   border: 1px solid var(--line);
   padding: 18px 16px;
   border-radius: 2px;
+}
+
+.product-label {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #3a3530;
+  color: #fbf7ef;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.product-list--single {
+  grid-template-columns: 1fr;
 }
 
 .product-card h4 {
