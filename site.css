@@ -671,6 +671,26 @@ html, body {
   .btn-add--added:hover { background: #f3c234; opacity: 0.5; }
 }
 
+.btn-add--survey {
+  background: #6b7f54;
+  color: #fbf7ef;
+  border-color: #5a6d44;
+}
+.btn-add--survey:active { background: #6b7f54; }
+@media (hover: hover) {
+  .btn-add--survey:hover { background: #5a6d44; }
+}
+
+.btn-add--referral {
+  background: #6e8294;
+  color: #fbf7ef;
+  border-color: #5a7084;
+}
+.btn-add--referral:active { background: #6e8294; }
+@media (hover: hover) {
+  .btn-add--referral:hover { background: #5a7084; }
+}
+
 .btn-add--sm {
   width: 82px;
   height: 56px;

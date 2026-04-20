@@ -14,6 +14,7 @@
     <button class="tab tab-active" data-tab="products" type="button">商品</button>
     <button class="tab" data-tab="survey" type="button">アンケート</button>
     <button class="tab" data-tab="contact" type="button">問い合わせ</button>
+    <button class="tab" data-tab="referral" type="button">紹介</button>
   </nav>
   <div class="cart-wrap">
     <span class="cart-subtotal" id="cartSubtotal">¥0</span>
@@ -49,11 +50,12 @@
               <h4>お試しペーパー <span class="free-tag">無料</span></h4>
               <p class="note">アンケート回答後、2-3枚お渡し (約1分)</p>
               <p class="duration"><span class="duration-label">耐用期間</span> 1週間</p>
-              <button class="btn-add" data-goto="survey" type="button">アンケートへ</button>
+              <button class="btn-add btn-add--survey" data-goto="survey" type="button">アンケートへ</button>
 
-              <div class="addon">
+              <div class="addon has-btn">
                 <h5 class="addon-title"><span class="addon-badge">A+</span>紹介特典</h5>
                 <p class="addon-note">紹介連絡1件で +3枚</p>
+                <button class="btn-add btn-add--sm btn-add--referral" data-goto="referral" type="button">紹介ページへ</button>
               </div>
             </article>
           </div>
@@ -128,17 +130,42 @@
   </div>
 
   <div class="tab-panel" data-panel="contact" hidden>
+    <section class="inquiry">
+      <h2 class="inquiry-title">CONTACT</h2>
+      <p class="inquiry-lead">ご質問・ご要望など、お気軽にお問い合わせください。</p>
+      <form class="inquiry-form" action="https://formsubmit.co/kakari8888@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="[1% Health Up] 一般問い合わせ">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <label class="field">
+          <span class="field-label">お名前<span class="field-hint">(ニックネーム可)</span></span>
+          <input type="text" name="name" required>
+        </label>
+        <label class="field">
+          <span class="field-label">メールアドレス</span>
+          <input type="email" name="email" required>
+        </label>
+        <label class="field">
+          <span class="field-label">ご用件</span>
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <button type="submit" class="btn-submit">送信する</button>
+      </form>
+    </section>
+  </div>
+
+  <div class="tab-panel" data-panel="referral" hidden>
     <nav class="sub-tabs" role="tablist">
-      <button class="sub-tab sub-tab-active" data-subtab="general" type="button">一般</button>
-      <button class="sub-tab" data-subtab="referral" type="button">紹介された方</button>
+      <button class="sub-tab sub-tab-active" data-subtab="referring" type="button">紹介する側</button>
+      <button class="sub-tab" data-subtab="referred" type="button">紹介される側</button>
     </nav>
 
-    <div class="sub-panel" data-subpanel="general">
+    <div class="sub-panel" data-subpanel="referring">
       <section class="inquiry">
-        <h2 class="inquiry-title">CONTACT</h2>
-        <p class="inquiry-lead">ご質問・ご要望など、お気軽にお問い合わせください。</p>
+        <h2 class="inquiry-title">REFER</h2>
+        <p class="inquiry-lead">ご紹介にご協力いただける方はこちらから。<br>紹介1件につき、お試しペーパー3枚を追加でお渡しします。</p>
         <form class="inquiry-form" action="https://formsubmit.co/kakari8888@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="[1% Health Up] 一般問い合わせ">
+          <input type="hidden" name="_subject" value="[1% Health Up] 紹介する側からの連絡">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_template" value="table">
           <label class="field">
@@ -146,24 +173,32 @@
             <input type="text" name="name" required>
           </label>
           <label class="field">
+            <span class="field-label">会員ID<span class="field-hint">(お持ちの方)</span></span>
+            <input type="text" name="member_id">
+          </label>
+          <label class="field">
             <span class="field-label">メールアドレス</span>
             <input type="email" name="email" required>
           </label>
           <label class="field">
-            <span class="field-label">ご用件</span>
-            <textarea name="message" rows="5" required></textarea>
+            <span class="field-label">ご紹介したい方の情報<span class="field-hint">(お名前・連絡先など)</span></span>
+            <textarea name="referee_info" rows="4" required></textarea>
+          </label>
+          <label class="field">
+            <span class="field-label">メッセージ<span class="field-hint">(任意)</span></span>
+            <textarea name="message" rows="3"></textarea>
           </label>
           <button type="submit" class="btn-submit">送信する</button>
         </form>
       </section>
     </div>
 
-    <div class="sub-panel" data-subpanel="referral" hidden>
+    <div class="sub-panel" data-subpanel="referred" hidden>
       <section class="inquiry">
-        <h2 class="inquiry-title">CONTACT</h2>
+        <h2 class="inquiry-title">REFER</h2>
         <p class="inquiry-lead">ご紹介を受けた方は、こちらからご連絡ください。</p>
         <form class="inquiry-form" action="https://formsubmit.co/kakari8888@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="[1% Health Up] 紹介された方からの問い合わせ">
+          <input type="hidden" name="_subject" value="[1% Health Up] 紹介される側からの問い合わせ">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_template" value="table">
           <label class="field">
