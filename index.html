@@ -9,12 +9,17 @@
 </head>
 <body>
 
-<div class="cart-bar">
+<header class="top-bar">
+  <nav class="tabs" role="tablist">
+    <button class="tab tab-active" data-tab="products" type="button">商品</button>
+    <button class="tab" data-tab="contact" type="button">問い合わせ</button>
+    <button class="tab" data-tab="survey" type="button">アンケート</button>
+  </nav>
   <button class="cart-toggle" id="cartBtn" type="button" aria-label="カート">
     <span class="cart-icon" aria-hidden="true">🛒</span>
     <span class="cart-count" id="cartCount">0</span>
   </button>
-</div>
+</header>
 
 <div class="cart-panel" id="cartPanel" hidden>
   <div class="cart-panel-header">
@@ -29,12 +34,6 @@
 </div>
 
 <main class="stage">
-
-  <nav class="tabs" role="tablist">
-    <button class="tab tab-active" data-tab="products" type="button">商品</button>
-    <button class="tab" data-tab="contact" type="button">問い合わせ</button>
-    <button class="tab" data-tab="survey" type="button">アンケート</button>
-  </nav>
 
   <div class="tab-panel" data-panel="products">
     <section class="products">
@@ -96,23 +95,23 @@
       <div class="product-group product-group--continuing">
         <h3 class="group-title">継続</h3>
         <p class="group-note">(<span class="addon-badge">B群</span>(1-4) 手当を終えた方のみ)</p>
-        <div class="product-list">
+        <div class="product-list product-list--single">
           <article class="product-card">
             <span class="product-label">C</span>
-            <img src="paper.svg" alt="" class="product-thumb">
-            <h4>ヒーリングペーパー</h4>
-            <p class="price">税込 ¥4,000</p>
-            <p class="duration"><span class="duration-label">耐用期間</span> 3〜6ヶ月</p>
-            <button class="btn-add" data-id="C" data-name="C: ヒーリングペーパー" data-price="4000" type="button">カートに追加</button>
-          </article>
-          <article class="product-card">
-            <span class="product-label">D</span>
             <img src="sticker.svg" alt="" class="product-thumb">
             <h4>シール</h4>
             <p class="price">税込 ¥1,000</p>
             <p class="note">12枚 / 1枚あたり約3日</p>
             <p class="duration"><span class="duration-label">耐用期間</span> 1ヶ月+</p>
-            <button class="btn-add" data-id="D" data-name="D: シール" data-price="1000" type="button">カートに追加</button>
+            <button class="btn-add" data-id="C" data-name="C: シール" data-price="1000" type="button">カートに追加</button>
+          </article>
+          <article class="product-card">
+            <span class="product-label">D</span>
+            <img src="paper.svg" alt="" class="product-thumb">
+            <h4>ヒーリングペーパー</h4>
+            <p class="price">税込 ¥4,000</p>
+            <p class="duration"><span class="duration-label">耐用期間</span> 3〜6ヶ月</p>
+            <button class="btn-add" data-id="D" data-name="D: ヒーリングペーパー" data-price="4000" type="button">カートに追加</button>
           </article>
           <article class="product-card">
             <span class="product-label">E</span>
@@ -235,10 +234,9 @@
           <span class="field-label">興味のある商品<span class="field-hint">(複数選択可)</span></span>
           <div class="option-group">
             <label class="option"><input type="checkbox" name="interest" value="A お試しペーパー"><span>A お試しペーパー</span></label>
-            <label class="option"><input type="checkbox" name="interest" value="B 手当+シール"><span>B 手当+シール</span></label>
-            <label class="option"><input type="checkbox" name="interest" value="B+ ヒーリングペーパー"><span>B+ ヒーリングペーパー</span></label>
-            <label class="option"><input type="checkbox" name="interest" value="C 継続ヒーリングペーパー"><span>C 継続ヒーリングペーパー</span></label>
-            <label class="option"><input type="checkbox" name="interest" value="D シール"><span>D シール</span></label>
+            <label class="option"><input type="checkbox" name="interest" value="B1-B4 手当+シール"><span>B1-B4 手当+シール</span></label>
+            <label class="option"><input type="checkbox" name="interest" value="C シール"><span>C シール</span></label>
+            <label class="option"><input type="checkbox" name="interest" value="D ヒーリングペーパー"><span>D ヒーリングペーパー</span></label>
             <label class="option"><input type="checkbox" name="interest" value="E カード"><span>E カード</span></label>
           </div>
         </div>
