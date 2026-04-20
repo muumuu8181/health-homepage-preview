@@ -284,8 +284,13 @@
     const saveCart = (c) => localStorage.setItem(CART_KEY, JSON.stringify(c));
     const yen = (n) => '¥' + n.toLocaleString();
 
+    const B_IDS = ['B1','B2','B3','B4'];
+
     function addToCart(id, name, price) {
-      const cart = getCart();
+      let cart = getCart();
+      if (B_IDS.includes(id)) {
+        cart = cart.filter(i => !B_IDS.includes(i.id));
+      }
       const existing = cart.find(i => i.id === id);
       if (existing) existing.qty++;
       else cart.push({id, name, price, qty: 1});
@@ -297,11 +302,29 @@
     }
 
     function removeFromCart(id) {
-      let newCart = getCart().filter(i => i.id !== id);
-      if (id === 'B1') {
-        newCart = newCart.filter(i => !['B2','B3','B4'].includes(i.id));
+      saveCart(getCart().filter(i => i.id !== id));
+      render();
+    }
+
+    function incQty(id) {
+      const cart = getCart();
+      const item = cart.find(i => i.id === id);
+      if (item) item.qty++;
+      saveCart(cart);
+      render();
+    }
+
+    function decQty(id) {
+      const cart = getCart();
+      const item = cart.find(i => i.id === id);
+      if (!item) return;
+      if (item.qty > 1) item.qty--;
+      else {
+        saveCart(cart.filter(i => i.id !== id));
+        render();
+        return;
       }
-      saveCart(newCart);
+      saveCart(cart);
       render();
     }
 
@@ -313,17 +336,17 @@
       document.getElementById('cartTotal').textContent = total.toLocaleString();
       document.getElementById('cartSubtotal').textContent = '¥' + total.toLocaleString();
 
-      const hasB1 = cart.some(i => i.id === 'B1');
-      ['B1','B2','B3','B4'].forEach(id => {
+      const hasAnyB = cart.some(i => B_IDS.includes(i.id));
+      B_IDS.forEach(id => {
         const btn = document.querySelector('[data-id="' + id + '"]');
         if (!btn) return;
         const inCart = cart.some(i => i.id === id);
         if (id === 'B1') {
           btn.disabled = inCart;
         } else {
-          btn.disabled = !hasB1 || inCart;
+          btn.disabled = !hasAnyB || inCart;
           const addon = btn.closest('.addon');
-          if (addon) addon.classList.toggle('addon--locked', !hasB1);
+          if (addon) addon.classList.toggle('addon--locked', !hasAnyB);
         }
         btn.classList.toggle('btn-add--added', inCart);
         btn.textContent = inCart ? '追加済み' : 'カートに追加';
@@ -332,15 +355,25 @@
       if (cart.length === 0) {
         list.innerHTML = '<li class="cart-empty">カートは空です</li>';
       } else {
-        list.innerHTML = cart.map(i => `
-          <li>
-            <div class="cart-item-info">
-              <span class="cart-item-name">${i.name}</span>
-              <span class="cart-item-price">${yen(i.price * i.qty)}${i.qty > 1 ? ' (×' + i.qty + ')' : ''}</span>
-            </div>
-            <button class="cart-remove" data-remove="${i.id}" type="button" aria-label="削除">×</button>
-          </li>
-        `).join('');
+        list.innerHTML = cart.map(i => {
+          const isB = B_IDS.includes(i.id);
+          return `
+            <li>
+              <div class="cart-item-info">
+                <span class="cart-item-name">${i.name}</span>
+                <span class="cart-item-price">${yen(i.price * i.qty)}</span>
+              </div>
+              ${isB ? '' : `
+                <div class="cart-qty">
+                  <button class="cart-qty-btn" data-dec="${i.id}" type="button" aria-label="減らす">−</button>
+                  <span class="cart-qty-num">${i.qty}</span>
+                  <button class="cart-qty-btn" data-inc="${i.id}" type="button" aria-label="増やす">＋</button>
+                </div>
+              `}
+              <button class="cart-remove" data-remove="${i.id}" type="button" aria-label="削除">×</button>
+            </li>
+          `;
+        }).join('');
       }
     }
 
@@ -362,6 +395,10 @@
       }
       const rem = e.target.closest('[data-remove]');
       if (rem) { removeFromCart(rem.dataset.remove); return; }
+      const inc = e.target.closest('[data-inc]');
+      if (inc) { incQty(inc.dataset.inc); return; }
+      const dec = e.target.closest('[data-dec]');
+      if (dec) { decQty(dec.dataset.dec); return; }
       if (e.target.closest('#cartBtn')) {
         const panel = document.getElementById('cartPanel');
         panel.hidden = !panel.hidden;

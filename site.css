@@ -832,6 +832,43 @@ html, body {
   -webkit-tap-highlight-color: transparent;
 }
 
+.cart-qty {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.cart-qty-btn {
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--line);
+  background: #fbf7ef;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+  padding: 0;
+  line-height: 1;
+}
+@media (hover: hover) {
+  .cart-qty-btn:hover { background: #ede4d3; }
+}
+
+.cart-qty-num {
+  min-width: 20px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
 .cart-empty {
   color: var(--ink-soft);
   font-size: 13px;
