@@ -134,9 +134,15 @@ html, body {
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
-.tab:hover {
-  background: #f2ebdc;
-  color: var(--ink);
+@media (hover: hover) {
+  .tab:hover {
+    background: #f2ebdc;
+    color: var(--ink);
+  }
+  .tab-active:hover {
+    background: #6b7f54;
+    color: #fbf7ef;
+  }
 }
 
 .tab-active {
@@ -181,9 +187,15 @@ html, body {
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
-.sub-tab:hover {
-  background: #f2ebdc;
-  color: var(--ink);
+@media (hover: hover) {
+  .sub-tab:hover {
+    background: #f2ebdc;
+    color: var(--ink);
+  }
+  .sub-tab-active:hover {
+    background: #6e8294;
+    color: #fbf7ef;
+  }
 }
 
 .sub-tab-active {
