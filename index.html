@@ -12,13 +12,16 @@
 <header class="top-bar">
   <nav class="tabs" role="tablist">
     <button class="tab tab-active" data-tab="products" type="button">商品</button>
-    <button class="tab" data-tab="contact" type="button">問い合わせ</button>
     <button class="tab" data-tab="survey" type="button">アンケート</button>
+    <button class="tab" data-tab="contact" type="button">問い合わせ</button>
   </nav>
-  <button class="cart-toggle" id="cartBtn" type="button" aria-label="カート">
-    <span class="cart-icon" aria-hidden="true">🛒</span>
-    <span class="cart-count" id="cartCount">0</span>
-  </button>
+  <div class="cart-wrap">
+    <span class="cart-subtotal" id="cartSubtotal">¥0</span>
+    <button class="cart-toggle" id="cartBtn" type="button" aria-label="カート">
+      <span class="cart-icon" aria-hidden="true">🛒</span>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
 </header>
 
 <div class="cart-panel" id="cartPanel" hidden>
@@ -37,8 +40,6 @@
 
   <div class="tab-panel" data-panel="products">
     <section class="products">
-      <h2 class="products-title">PRODUCTS</h2>
-
       <div class="product-group">
         <div class="product-subgroup">
           <p class="subgroup-label">お試し</p>
@@ -47,7 +48,7 @@
               <span class="product-label">A</span>
               <img src="paper.svg" alt="" class="product-thumb">
               <h4>お試しペーパー <span class="free-tag">無料</span></h4>
-              <p class="note">アンケート回答後、3枚お渡し (約1分)</p>
+              <p class="note"><a href="#" class="link-to-survey" data-goto="survey">アンケート</a>回答後、3枚お渡し (約1分)</p>
               <p class="duration"><span class="duration-label">耐用期間</span> 1週間</p>
 
               <div class="addon">
@@ -306,6 +307,7 @@
       const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
       document.getElementById('cartCount').textContent = count;
       document.getElementById('cartTotal').textContent = total.toLocaleString();
+      document.getElementById('cartSubtotal').textContent = '¥' + total.toLocaleString();
       const list = document.getElementById('cartItems');
       if (cart.length === 0) {
         list.innerHTML = '<li class="cart-empty">カートは空です</li>';
@@ -323,6 +325,15 @@
     }
 
     document.addEventListener('click', (e) => {
+      const link = e.target.closest('[data-goto]');
+      if (link) {
+        e.preventDefault();
+        const target = link.dataset.goto;
+        const tab = document.querySelector('.tab[data-tab="' + target + '"]');
+        if (tab) tab.click();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
       const btn = e.target.closest('.btn-add');
       if (btn) {
         addToCart(btn.dataset.id, btn.dataset.name, parseInt(btn.dataset.price, 10));
@@ -341,6 +352,11 @@
       }
       if (e.target.closest('#cartClear')) {
         if (confirm('カートを空にしますか?')) { saveCart([]); render(); }
+        return;
+      }
+      const panel = document.getElementById('cartPanel');
+      if (!panel.hidden && !panel.contains(e.target)) {
+        panel.hidden = true;
       }
     });
 
