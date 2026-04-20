@@ -108,7 +108,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 24px 40px;
+  padding: 16px 18px 24px;
 }
 
 .top-bar {
@@ -182,7 +182,7 @@ html, body {
   max-width: 640px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 14px;
 }
 
 .tab-panel[hidden],
@@ -256,11 +256,24 @@ html, body {
 }
 
 .product-group {
-  margin-bottom: 28px;
-  padding: 18px 18px 20px;
+  margin-bottom: 14px;
+  padding: 12px 14px 14px;
   background: #faf5ea;
   border-top: 2px solid var(--line);
   border-bottom: 2px solid var(--line);
+}
+
+.group-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.group-header .group-title,
+.group-header .group-note {
+  margin: 0;
 }
 
 .product-group--continuing {
@@ -277,14 +290,18 @@ html, body {
   letter-spacing: 0.16em;
 }
 
+.product-subgroup {
+  margin-bottom: 8px;
+}
+
 .product-subgroup + .product-divider {
   border-top: 1px dashed var(--line);
-  margin: 16px 0;
+  margin: 10px 0;
   opacity: 0.9;
 }
 
 .subgroup-label {
-  margin: 0 0 10px;
+  margin: 0 0 6px;
   font-size: 12px;
   letter-spacing: 0.14em;
   color: var(--ink);
@@ -292,24 +309,24 @@ html, body {
 }
 
 .subgroup-note {
-  margin: -4px 0 12px;
+  margin: -2px 0 8px;
   font-size: 11.5px;
   color: var(--ink-soft);
   letter-spacing: 0.04em;
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
 .product-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 8px;
 }
 
 .product-card {
   position: relative;
   background: #fbf7ef;
   border: 1px solid var(--line);
-  padding: 18px 16px;
+  padding: 12px 14px;
   border-radius: 2px;
 }
 
@@ -328,9 +345,9 @@ html, body {
 .product-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 10px;
-  padding-left: 32px;
+  gap: 10px;
+  margin-bottom: 4px;
+  padding-left: 28px;
 }
 
 .product-card .product-header h4 {
@@ -367,12 +384,12 @@ html, body {
 
 .addon {
   position: relative;
-  margin-top: 14px;
-  padding: 14px 18px;
+  margin-top: 10px;
+  padding: 10px 14px;
   background: #f5efe0;
   border: 1px dashed #c9bfa8;
   border-radius: 3px;
-  min-height: 72px;
+  min-height: 68px;
   transition: background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
 }
 
@@ -452,7 +469,7 @@ html, body {
 }
 
 .product-card h4 {
-  margin: 0 0 8px;
+  margin: 0 0 4px;
   font-size: 15px;
   font-weight: 500;
   color: var(--ink);
@@ -460,7 +477,7 @@ html, body {
 }
 
 .product-card .price {
-  margin: 0 0 6px;
+  margin: 0 0 2px;
   font-size: 13px;
   color: var(--ink);
   font-weight: 500;
@@ -468,10 +485,10 @@ html, body {
 }
 
 .product-card .note {
-  margin: 0 0 4px;
+  margin: 0 0 2px;
   font-size: 11.5px;
   color: var(--ink-soft);
-  line-height: 1.5;
+  line-height: 1.45;
   letter-spacing: 0.02em;
 }
 
