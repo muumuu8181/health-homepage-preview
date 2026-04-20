@@ -132,7 +132,13 @@ html, body {
   cursor: pointer;
   letter-spacing: 0.06em;
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
+
+.tab:focus { outline: none; }
+.tab:active { background: #fbf7ef; color: var(--ink-soft); }
+.tab-active:active { background: #6b7f54; color: #fbf7ef; }
 
 @media (hover: hover) {
   .tab:hover {
@@ -185,7 +191,13 @@ html, body {
   cursor: pointer;
   letter-spacing: 0.06em;
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
+
+.sub-tab:focus { outline: none; }
+.sub-tab:active { background: #fbf7ef; color: var(--ink-soft); }
+.sub-tab-active:active { background: #6e8294; color: #fbf7ef; }
 
 @media (hover: hover) {
   .sub-tab:hover {
