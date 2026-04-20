@@ -1012,36 +1012,38 @@ html, body {
 .cart-submit {
   display: block;
   width: 100%;
-  padding: 12px 14px;
+  padding: 16px 14px;
   background: #6b7f54;
   color: #fbf7ef;
-  border: 1px solid #5a6d44;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
   cursor: pointer;
   font-family: inherit;
   -webkit-tap-highlight-color: transparent;
-  min-height: 46px;
+  min-height: 56px;
+  box-shadow: 0 3px 10px rgba(107, 127, 84, 0.4);
 }
 
 @media (hover: hover) {
-  .cart-submit:hover { background: #5a6d44; }
+  .cart-submit:hover { background: #5a6d44; box-shadow: 0 4px 12px rgba(107, 127, 84, 0.5); }
 }
 
 .cart-clear {
   display: block;
   width: 100%;
-  margin-top: 6px;
+  margin-top: 10px;
   background: transparent;
   border: none;
   color: var(--ink-soft);
-  padding: 6px;
-  font-size: 11px;
+  padding: 4px;
+  font-size: 10.5px;
   cursor: pointer;
   font-family: inherit;
   text-decoration: underline;
+  opacity: 0.7;
   -webkit-tap-highlight-color: transparent;
 }
 
