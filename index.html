@@ -65,6 +65,7 @@
 
         <div class="product-subgroup">
           <p class="subgroup-label">初回限定</p>
+          <p class="subgroup-note">※ B群は各1点のみ。もう一度押すと解除されます。</p>
           <div class="product-list product-list--single">
             <article class="product-card has-btn">
               <span class="product-label">B1</span>
@@ -382,7 +383,7 @@
         if (!btn) return;
         const inCart = cart.some(i => i.id === id);
         if (id === 'B1') {
-          btn.disabled = inCart;
+          btn.disabled = false;
         } else {
           btn.disabled = !hasB1;
           const addon = btn.closest('.addon');
@@ -401,13 +402,13 @@
             <li>
               <div class="cart-item-info">
                 <span class="cart-item-name">${i.name}</span>
-                <span class="cart-item-price">${yen(i.price * i.qty)}</span>
+                <span class="cart-item-price">${yen(i.price * i.qty)}${isB ? ' <span class="cart-item-note">/ 1点のみ</span>' : ''}</span>
               </div>
               ${isB ? '' : `
                 <div class="cart-qty">
                   <button class="cart-qty-btn" data-dec="${i.id}" type="button" aria-label="減らす">−</button>
                   <span class="cart-qty-num">${i.qty}</span>
-                  <button class="cart-qty-btn" data-inc="${i.id}" type="button" aria-label="増やす">＋</button>
+                  <button class="cart-qty-btn" data-inc="${i.id}" type="button" aria-label="increase">＋</button>
                 </div>
               `}
               <button class="cart-remove" data-remove="${i.id}" type="button" aria-label="削除">×</button>
@@ -431,7 +432,7 @@
       if (btn) {
         if (btn.disabled) return;
         const id = btn.dataset.id;
-        if (['B2','B3','B4'].includes(id) && getCart().some(i => i.id === id)) {
+        if (B_IDS.includes(id) && getCart().some(i => i.id === id)) {
           removeFromCart(id);
           return;
         }
