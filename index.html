@@ -355,9 +355,21 @@
       if (existing) existing.qty++;
       else cart.push({id, name, price, qty: 1});
       saveCart(cart);
-      const btn = document.getElementById('cartBtn');
-      btn.classList.add('cart-bump');
-      setTimeout(() => btn.classList.remove('cart-bump'), 300);
+      const cartBtn = document.getElementById('cartBtn');
+      cartBtn.classList.add('cart-bump');
+      setTimeout(() => cartBtn.classList.remove('cart-bump'), 300);
+      if (!B_IDS.includes(id)) {
+        const pBtn = document.querySelector('.btn-add[data-id="' + id + '"]');
+        if (pBtn) {
+          const original = pBtn.textContent;
+          pBtn.textContent = '✓ 追加しました';
+          pBtn.classList.add('btn-add--flash');
+          setTimeout(() => {
+            pBtn.textContent = original;
+            pBtn.classList.remove('btn-add--flash');
+          }, 900);
+        }
+      }
       render();
     }
 
