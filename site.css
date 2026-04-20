@@ -320,9 +320,24 @@ html, body {
 
 .product-thumb {
   display: block;
-  width: 64px;
-  height: 64px;
-  margin: 2px auto 8px;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+}
+
+.product-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  padding-left: 32px;
+}
+
+.product-card .product-header h4 {
+  margin: 0;
+  padding-left: 0;
+  flex: 1;
+  line-height: 1.4;
 }
 
 .product-label {
@@ -705,6 +720,28 @@ html, body {
   top: 50%;
   transform: translateY(-50%);
   font-size: 12px;
+}
+
+.discount-tag {
+  position: absolute;
+  top: calc(50% - 38px);
+  right: 6px;
+  background: #d9584b;
+  color: #fbf7ef;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0;
+  transform: rotate(-5deg);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  white-space: nowrap;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.addon.has-btn {
+  min-height: 86px;
 }
 .btn-add--sm:active { background: #f3c234; }
 @media (hover: hover) {
