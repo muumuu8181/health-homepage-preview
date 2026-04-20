@@ -220,6 +220,12 @@ html, body {
   border-bottom: 2px solid var(--line);
 }
 
+.product-group--continuing {
+  background: #fbe7cb;
+  border-top-color: #e6c9a0;
+  border-bottom-color: #e6c9a0;
+}
+
 .group-title {
   font-size: 13px;
   color: var(--ink);
