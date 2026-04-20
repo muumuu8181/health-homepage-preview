@@ -331,10 +331,11 @@ html, body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 2px 8px;
+  width: 26px;
+  height: 26px;
   background: #3a3530;
   color: #fbf7ef;
-  border-radius: 3px;
+  border-radius: 50%;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0;
