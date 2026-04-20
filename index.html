@@ -32,9 +32,18 @@
   <ul class="cart-list" id="cartItems"></ul>
   <div class="cart-footer">
     <p class="cart-total-row">合計 <strong>¥<span id="cartTotal">0</span></strong></p>
-    <button class="cart-clear" id="cartClear" type="button">空にする</button>
+    <button class="cart-submit" id="cartSubmit" type="button">注文に進む</button>
+    <button class="cart-clear" id="cartClear" type="button">カートを空にする</button>
   </div>
 </div>
+
+<form id="orderForm" action="https://formsubmit.co/kakari8888@gmail.com" method="POST" style="display:none;">
+  <input type="hidden" name="_subject" value="[1% Health Up] ご注文">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="order_items" id="orderItemsInput">
+  <input type="hidden" name="order_total" id="orderTotalInput">
+</form>
 
 <main class="stage">
 
@@ -471,6 +480,17 @@
       }
       if (e.target.closest('#cartClear')) {
         if (confirm('カートを空にしますか?')) { saveCart([]); render(); }
+        return;
+      }
+      if (e.target.closest('#cartSubmit')) {
+        const cart = getCart();
+        if (cart.length === 0) { alert('カートに商品がありません'); return; }
+        const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+        const itemsText = cart.map(i => `${i.name} × ${i.qty} = ¥${(i.price * i.qty).toLocaleString()}`).join('\n');
+        if (!confirm('ご注文を確定します。\n\n' + itemsText + '\n\n合計 ¥' + total.toLocaleString() + '\n\nよろしいですか?')) return;
+        document.getElementById('orderItemsInput').value = itemsText;
+        document.getElementById('orderTotalInput').value = '¥' + total.toLocaleString();
+        document.getElementById('orderForm').submit();
         return;
       }
       const panel = document.getElementById('cartPanel');
