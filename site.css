@@ -356,6 +356,10 @@ html, body {
   padding-right: 108px;
 }
 
+.product-card:has(> .btn-add) > .addon {
+  margin-right: -96px;
+}
+
 .addon + .addon {
   margin-top: 10px;
 }
