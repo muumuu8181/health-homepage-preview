@@ -305,7 +305,8 @@ html, body {
   border-radius: 2px;
 }
 
-.product-card:has(> .btn-add) {
+.product-card:has(> .btn-add),
+.product-card.has-btn {
   padding-right: 112px;
 }
 
@@ -352,11 +353,13 @@ html, body {
   transition: background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
 }
 
-.addon:has(.btn-add) {
+.addon:has(.btn-add),
+.addon.has-btn {
   padding-right: 108px;
 }
 
-.product-card:has(> .btn-add) > .addon {
+.product-card:has(> .btn-add) > .addon,
+.product-card.has-btn > .addon {
   margin-right: -96px;
 }
 
