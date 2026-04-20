@@ -313,6 +313,19 @@ html, body {
   margin-right: 2px;
 }
 
+.free-tag {
+  display: inline-block;
+  padding: 1px 8px;
+  background: #c89a5a;
+  color: #fbf7ef;
+  border-radius: 3px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-size: 0.85em;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
 .group-note {
   margin: -4px 0 14px;
   font-size: 12px;
