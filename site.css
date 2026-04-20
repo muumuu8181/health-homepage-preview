@@ -288,9 +288,9 @@ html, body {
 
 .product-thumb {
   display: block;
-  width: 100px;
-  height: 100px;
-  margin: 4px auto 10px;
+  width: 64px;
+  height: 64px;
+  margin: 2px auto 8px;
 }
 
 .product-label {
