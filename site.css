@@ -302,14 +302,12 @@ html, body {
 }
 
 .tegate-tag {
-  display: inline-block;
-  padding: 1px 8px;
-  background: #6b7f54;
-  color: #fbf7ef;
-  border-radius: 3px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  font-size: 0.95em;
+  background: linear-gradient(transparent 58%, rgba(138, 154, 107, 0.35) 58%);
+  color: #3a3530;
+  font-weight: 800;
+  font-size: 1.1em;
+  padding: 0 3px;
+  letter-spacing: 0.06em;
   margin-right: 2px;
 }
 
