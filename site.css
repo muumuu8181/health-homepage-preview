@@ -282,16 +282,41 @@ html, body {
   border-bottom-color: #e6c9a0;
 }
 
-.product-card .cost-perf {
-  margin: 0 0 2px;
-  font-size: 11.5px;
-  color: var(--ink-soft);
-  letter-spacing: 0.02em;
+.spec-table {
+  width: 100%;
+  max-width: 260px;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin: 4px 0 2px;
 }
 
-.product-card .cost-perf strong {
+.spec-table th {
+  font-weight: 400;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+  padding: 2px 6px 2px 0;
+  text-align: left;
+  width: 72px;
+  font-size: 10.5px;
+  vertical-align: middle;
+  border-bottom: 1px dotted var(--line);
+}
+
+.spec-table td {
   color: var(--ink);
+  padding: 2px 0;
+  vertical-align: middle;
+  border-bottom: 1px dotted var(--line);
+}
+
+.spec-table tr:last-child th,
+.spec-table tr:last-child td {
+  border-bottom: none;
+}
+
+.spec-table td strong {
   font-weight: 700;
+  color: var(--ink);
 }
 
 .group-title {
