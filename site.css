@@ -1039,6 +1039,52 @@ html, body {
   .cart-submit:hover { background: #5a6d44; box-shadow: 0 4px 12px rgba(107, 127, 84, 0.5); }
 }
 
+.member-badge {
+  position: fixed;
+  bottom: 12px;
+  left: 12px;
+  padding: 6px 12px;
+  background: #3a3530;
+  color: #fbf7ef;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  z-index: 100;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+}
+
+.guest-banner {
+  margin: 0 auto 16px;
+  padding: 14px 18px;
+  background: #faebd7;
+  border: 1px solid #d9a820;
+  border-left: 4px solid #d9a820;
+  border-radius: 4px;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.6;
+  max-width: 640px;
+  width: 100%;
+}
+
+.guest-banner strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+body.is-guest .btn-add:not([data-goto]) {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+}
+
+body.is-guest .cart-wrap {
+  display: none;
+}
+
 .cart-clear {
   display: block;
   width: 100%;

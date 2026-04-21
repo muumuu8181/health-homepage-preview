@@ -42,6 +42,7 @@
   <input type="hidden" name="_template" value="table">
   <input type="hidden" name="order_items" id="orderItemsInput">
   <input type="hidden" name="order_total" id="orderTotalInput">
+  <input type="hidden" name="member_id" id="orderMemberInput">
 </form>
 
 <main class="stage">
@@ -336,6 +337,31 @@
     });
   });
 
+  // Member gating
+  const MEMBERS = {
+    'M0001-7k9s2a': { id: 'M0001', name: 'テスト会員 1' },
+    'M0002-a3d8pq': { id: 'M0002', name: 'テスト会員 2' },
+    'M0003-x4nfz9': { id: 'M0003', name: 'テスト会員 3' }
+  };
+  const urlParams = new URLSearchParams(window.location.search);
+  const memberToken = urlParams.get('m');
+  const currentMember = MEMBERS[memberToken] || null;
+
+  if (currentMember) {
+    document.body.classList.add('is-member');
+    const badge = document.createElement('div');
+    badge.className = 'member-badge';
+    badge.textContent = '会員 ' + currentMember.id;
+    document.body.appendChild(badge);
+  } else {
+    document.body.classList.add('is-guest');
+    const banner = document.createElement('div');
+    banner.className = 'guest-banner';
+    banner.innerHTML = '<strong>会員限定ページ</strong><br>商品のご購入は初回施術済みの方に限らせていただきます。一般のお問い合わせ・アンケート・ご紹介は下記フォームをご利用ください。';
+    const main = document.querySelector('main.stage');
+    if (main) main.insertBefore(banner, main.firstChild);
+  }
+
   (function() {
     const CART_KEY = 'hh_cart_v1';
     const getCart = () => { try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e) { return []; } };
@@ -467,6 +493,10 @@
       if (btn) {
         if (btn.disabled) return;
         const id = btn.dataset.id;
+        if (id && !currentMember) {
+          alert('商品のご購入は会員限定です。初回施術済みの方にお渡しする専用URLからアクセスしてください。');
+          return;
+        }
         if (B_IDS.includes(id) && getCart().some(i => i.id === id)) {
           removeFromCart(id);
           return;
@@ -498,9 +528,12 @@
         if (cart.length === 0) { alert('カートに商品がありません'); return; }
         const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
         const itemsText = cart.map(i => `${i.name} × ${i.qty} = ¥${(i.price * i.qty).toLocaleString()}`).join('\n');
-        if (!confirm('ご注文を確定します。\n\n' + itemsText + '\n\n合計 ¥' + total.toLocaleString() + '\n\nよろしいですか?')) return;
+        const memberLine = currentMember ? ('会員ID: ' + currentMember.id + '\n\n') : '';
+        if (!confirm(memberLine + 'ご注文を確定します。\n\n' + itemsText + '\n\n合計 ¥' + total.toLocaleString() + '\n\nよろしいですか?')) return;
         document.getElementById('orderItemsInput').value = itemsText;
         document.getElementById('orderTotalInput').value = '¥' + total.toLocaleString();
+        const memberInput = document.getElementById('orderMemberInput');
+        if (memberInput) memberInput.value = currentMember ? currentMember.id : '(未登録)';
         document.getElementById('orderForm').submit();
         return;
       }
