@@ -48,6 +48,13 @@
 <main class="stage">
 
   <div class="tab-panel" data-panel="products">
+
+    <nav class="sub-tabs" role="tablist">
+      <button class="sub-tab sub-tab-active" data-subtab="products-first" type="button">初回</button>
+      <button class="sub-tab" data-subtab="products-return" type="button">2回目以降</button>
+    </nav>
+
+    <div class="sub-panel" data-subpanel="products-first">
     <section class="products">
       <div class="product-group">
         <div class="product-subgroup">
@@ -120,7 +127,11 @@
           </div>
         </div>
       </div>
+    </section>
+    </div>
 
+    <div class="sub-panel" data-subpanel="products-return" hidden>
+    <section class="products">
       <div class="product-group product-group--continuing">
         <div class="group-header">
           <h3 class="group-title">継続</h3>
@@ -187,6 +198,8 @@
         </div>
       </div>
     </section>
+    </div>
+
   </div>
 
   <div class="tab-panel" data-panel="contact" hidden>
@@ -364,10 +377,12 @@
   document.querySelectorAll('.sub-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       const target = tab.dataset.subtab;
-      document.querySelectorAll('.sub-tab').forEach(t => {
+      const parent = tab.closest('.tab-panel');
+      if (!parent) return;
+      parent.querySelectorAll('.sub-tab').forEach(t => {
         t.classList.toggle('sub-tab-active', t === tab);
       });
-      document.querySelectorAll('.sub-panel').forEach(p => {
+      parent.querySelectorAll('.sub-panel').forEach(p => {
         p.hidden = p.dataset.subpanel !== target;
       });
     });
