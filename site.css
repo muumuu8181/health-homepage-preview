@@ -320,6 +320,14 @@ html, body {
   color: var(--ink);
 }
 
+.shipping-note {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 11px;
+  color: #a07a3a;
+  font-weight: 500;
+}
+
 .group-title {
   font-size: 13px;
   color: var(--ink);
